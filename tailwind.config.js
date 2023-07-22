@@ -4,8 +4,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        gray: "#F0F2F5",
+        grayDark: "#A1A1A1",
+        grayLight: "#F0F2F5",
         green: "#00A884",
+      },
+      fontSize: {
+        large: "40px",
       },
     },
   },
