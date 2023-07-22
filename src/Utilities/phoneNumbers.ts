@@ -12,11 +12,26 @@
  12 9 91944059
 
 */
-export const formatNumbers = (numbers: number[]) => {
+export const formatNumbers = (numbers: string[]): string[] => {
+  // remove everything but numbers
+  const cleanNumbers = numbers.map((n) => {
+    return n.replace(/\D/g, "");
+  });
+  const numbersWithCountryCode = cleanNumbers.map((n) => {
+    if (n.slice(0, 2) === "55") {
+      return n;
+    }
+    return `55${n}`;
+  });
+
+  console.log(numbersWithCountryCode);
+
+  return numbersWithCountryCode;
+
   // console.log(numbers)
 };
 
-export const validateNumbers = (numbers: number[]) => {
+export const validateNumbers = (numbers: string[]) => {
   // console.log(numbers)
 };
 
@@ -25,7 +40,19 @@ export const divideNumbers = (
   typeOfDivider: "comma" | "lineBreak"
 ) => {
   if (typeOfDivider) {
-    return stringNumbers.split(typeOfDivider);
+    return stringNumbers.split("\n");
   }
   return stringNumbers.split(",");
+};
+
+export const getFormattedNumbers = (
+  numbersString: string,
+  typeOfDivider: "comma" | "lineBreak"
+): { numbers: string[]; invalidNumbersLength: number } => {
+  const numbersArray = divideNumbers(numbersString, typeOfDivider);
+
+  return {
+    numbers: formatNumbers(numbersArray),
+    invalidNumbersLength: 0,
+  };
 };
