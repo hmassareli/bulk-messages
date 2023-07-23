@@ -31,6 +31,11 @@ export const formatNumbers = (numbers: string[]): string[] => {
   // console.log(numbers)
 };
 
+const removeRepeatedNumbers = (numbers: string[]) => {
+  const uniqueNumbers = [...new Set(numbers)];
+  return uniqueNumbers;
+};
+
 export const validateNumbers = (numbers: string[]) => {
   // console.log(numbers)
 };
@@ -50,9 +55,9 @@ export const getFormattedNumbers = (
   typeOfDivider: "comma" | "lineBreak"
 ): { numbers: string[]; invalidNumbersLength: number } => {
   const numbersArray = divideNumbers(numbersString, typeOfDivider);
-
+  const result = removeRepeatedNumbers(formatNumbers(numbersArray));
   return {
-    numbers: formatNumbers(numbersArray),
+    numbers: result,
     invalidNumbersLength: 0,
   };
 };
