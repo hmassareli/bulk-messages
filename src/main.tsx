@@ -1,5 +1,5 @@
 import App from "Components/App";
-import { BulkMessager } from "Components/BulkMessage";
+import { BulkMessager } from "Components/BulkMessage/BulkMessage";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createHashRouter, RouterProvider } from "react-router-dom";
